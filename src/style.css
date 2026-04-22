@@ -1,19 +1,28 @@
 html {
   --section-background-color: linear-gradient(
     180deg,
-    rgba(4, 10, 24, 0.98) 0%,
-    rgba(8, 16, 35, 0.98) 42%,
-    rgba(6, 12, 28, 0.98) 100%
+    rgba(1, 3, 10, 0.99) 0%,
+    rgba(3, 7, 18, 0.99) 45%,
+    rgba(1, 4, 12, 0.99) 100%
   );
 
   --image-gradient: linear-gradient(
     180deg,
-    rgba(8, 16, 36, 0.78) 0%,
-    rgba(4, 10, 24, 0.92) 100%
+    rgba(2, 5, 14, 0.84) 0%,
+    rgba(0, 0, 0, 0.96) 100%
   );
 
-  --imp-text-color: #8cc8ff;
-  --card-background-color: rgba(10, 18, 38, 0.78);
+  --imp-text-color: #8ecbff;
+  --card-background-color: rgba(6, 12, 24, 0.86);
+}
+
+body {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(52, 92, 168, 0.12), transparent 22%),
+    radial-gradient(circle at 80% 10%, rgba(95, 139, 224, 0.08), transparent 18%),
+    radial-gradient(circle at 50% 75%, rgba(70, 109, 187, 0.06), transparent 24%),
+    #010308;
+  color: #f8fbff;
 }
 
 .purple {
@@ -83,7 +92,7 @@ button:focus {
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: rgba(5, 12, 28, 0.88) !important;
+  background-color: rgba(2, 6, 16, 0.9) !important;
   transition: all 0.3s ease-out 0s !important;
   box-shadow: 0px 10px 24px 0px rgba(2, 5, 12, 0.32) !important;
   backdrop-filter: blur(15px) !important;
@@ -257,6 +266,7 @@ button:focus {
   height: 100%;
   z-index: 0;
   pointer-events: none;
+  opacity: 0.9;
 }
 
 .home-header {
@@ -267,9 +277,9 @@ button:focus {
   position: relative;
   z-index: 1;
   background-image:
-    radial-gradient(circle at 20% 20%, rgba(117, 164, 255, 0.14), transparent 28%),
-    radial-gradient(circle at 80% 15%, rgba(155, 200, 255, 0.1), transparent 24%),
-    radial-gradient(circle at 50% 80%, rgba(99, 149, 255, 0.08), transparent 26%),
+    radial-gradient(circle at 18% 18%, rgba(81, 131, 230, 0.12), transparent 22%),
+    radial-gradient(circle at 82% 12%, rgba(155, 202, 255, 0.08), transparent 20%),
+    radial-gradient(circle at 48% 78%, rgba(74, 118, 201, 0.06), transparent 24%),
     var(--image-gradient);
   background-position: top center;
   background-repeat: no-repeat;
@@ -353,7 +363,7 @@ button:focus {
   background: var(--card-background-color);
   border: 1px solid rgba(140, 200, 255, 0.14);
   border-radius: 20px;
-  box-shadow: 0 18px 45px rgba(2, 8, 18, 0.28);
+  box-shadow: 0 20px 55px rgba(0, 0, 0, 0.42);
 }
 
 .hero-highlight-card {
@@ -467,8 +477,8 @@ button:focus {
 .profile-photo,
 .about-photo {
   border-radius: 24px;
-  border: 1px solid rgba(199, 112, 240, 0.2);
-  box-shadow: 0 20px 50px rgba(7, 4, 18, 0.28);
+  border: 1px solid rgba(142, 203, 255, 0.22);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
 }
 
 .home-social-row {
@@ -544,7 +554,7 @@ button:focus {
 /* Footer */
 /* --------- */
 .footer {
-  background-color: rgba(5, 11, 24, 0.95);
+  background-color: rgba(2, 5, 14, 0.96);
   bottom: 0 !important;
   padding-top: 10px !important;
   padding-bottom: 8px !important ;
@@ -608,7 +618,7 @@ button:focus {
 }
 
 .project-card-view {
-  box-shadow: 0 4px 5px 3px rgba(119, 53, 136, 0.459) !important;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.38) !important;
   color: white !important;
   background-color: var(--card-background-color) !important;
   opacity: 1 !important;
@@ -620,7 +630,7 @@ button:focus {
 .project-card-view:hover {
   transform: translateY(-6px) !important;
   overflow: hidden !important;
-  box-shadow: 0 12px 32px rgba(3, 10, 22, 0.35) !important;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.46) !important;
 }
 
 .project-description {
@@ -707,6 +717,7 @@ button:focus {
   font-size: 2.3em !important;
   font-weight: 500 !important;
   padding-top: 10px !important;
+  text-align: center;
 }
 
 .project-support,
@@ -715,6 +726,9 @@ button:focus {
   max-width: 760px;
   line-height: 1.8;
   margin-bottom: 1.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
 }
 
 .project-status {
@@ -766,6 +780,7 @@ button:focus {
   padding-top: 150px !important;
   padding-bottom: 60px !important;
   color: white !important;
+  background-image: var(--section-background-color) !important;
 }
 
 .about-photo-top {
@@ -777,6 +792,7 @@ button:focus {
 .about-heading {
   font-size: 2.4em !important;
   padding-bottom: 20px;
+  text-align: center;
 }
 
 .about-copy {
@@ -789,6 +805,7 @@ button:focus {
 .about-quote {
   color: rgb(155 126 172);
   margin-top: 1.2rem;
+  text-align: center;
 }
 
 .skills-row {
@@ -803,11 +820,13 @@ button:focus {
 
 .tech-icons {
   display: flex !important;
-  align-self: center !important;
+  align-self: stretch !important;
   justify-content: center !important;
+  align-items: center !important;
+  flex-direction: column !important;
   font-size: 1rem !important;
-  margin: 15px !important;
-  padding: 10px 20px !important;
+  margin: 0 !important;
+  padding: 1.2rem 1rem !important;
   opacity: 0.93 !important;
   outline: 1.7px solid rgba(140, 200, 255, 0.3) !important;
   vertical-align: middle !important;
@@ -820,16 +839,20 @@ button:focus {
   cursor: pointer !important;
   transition: outline-color 0.3s, outline-width 0.3s, transform 0.3s;
   color: white;
-  min-height: 88px;
+  min-height: 132px;
   background: rgba(10, 18, 38, 0.88);
-  gap: 12px;
+  gap: 14px;
 }
 
 .tech-icons-text {
   display: flex;
   align-items: center;
-  margin-left: 10px;
+  justify-content: center;
+  margin-left: 0;
   color: white;
+  text-align: center;
+  font-size: 1.06rem;
+  line-height: 1.35;
 }
 
 @media (max-width: 767px) {
@@ -844,8 +867,10 @@ button:focus {
   outline: 2.2px solid rgba(140, 200, 255, 0.72) !important;
 }
 .tech-icon-images {
-  height: 1.6rem;
+  height: 2.1rem;
+  width: auto;
   line-height: 1.6 !important;
+  object-fit: contain;
 }
 
 .quote-card-view {
