@@ -1,25 +1,11 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Particle from "../Particle";
-import juniorhigh from "../../Assets/AcadCertificates/juniorhigh.jpg";
-import grade10 from "../../Assets/AcadCertificates/grade10.jpg";
-import grade10Alt from "../../Assets/AcadCertificates/grade10-1.jpg";
-import grade10Wh from "../../Assets/AcadCertificates/grade10-wh.jpg";
-import grade11 from "../../Assets/AcadCertificates/grade11.jpg";
-import grade11Alt from "../../Assets/AcadCertificates/grade11-1.jpg";
-import wika from "../../Assets/AcadCertificates/wika.jpg";
-
-const certificates = [
-  { title: "Junior High Certificate", image: juniorhigh },
-  { title: "Grade 10 Certificate", image: grade10 },
-  { title: "Grade 10 Certificate 2", image: grade10Alt },
-  { title: "Grade 10 Wika Certificate", image: grade10Wh },
-  { title: "Grade 11 Certificate", image: grade11 },
-  { title: "Grade 11 Certificate 2", image: grade11Alt },
-  { title: "Wika Certificate", image: wika },
-];
+import { usePortfolio } from "../../context/PortfolioContext";
 
 function ResumeNew() {
+  const { certificates } = usePortfolio();
+
   return (
     <Container fluid className="resume-section">
       <Particle />
@@ -36,7 +22,7 @@ function ResumeNew() {
             <Col lg={4} md={6} sm={12} className="certificate-card-wrap" key={certificate.title}>
               <div className="certificate-card">
                 <img
-                  src={certificate.image}
+                  src={certificate.imageUrl}
                   alt={certificate.title}
                   className="img-fluid certificate-image"
                 />

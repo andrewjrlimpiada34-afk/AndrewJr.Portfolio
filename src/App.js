@@ -6,6 +6,9 @@ import About from "./components/About/About";
 import Projects from "./components/Projects/Projects";
 import Footer from "./components/Footer";
 import Resume from "./components/Resume/ResumeNew";
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import AdminLoginModal from "./components/Auth/AdminLoginModal";
+import ProtectedRoute from "./components/Auth/ProtectedRoute";
 import {
   BrowserRouter as Router,
   Route,
@@ -13,12 +16,15 @@ import {
   Navigate
 } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import { AuthProvider } from "./context/AuthContext";
+import { PortfolioProvider } from "./context/PortfolioContext";
 import "./style.css";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   const [load, upadateLoad] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -29,21 +35,37 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      <Preloader load={load} />
-      <div className="App" id={load ? "no-scroll" : "scroll"}>
-        <Navbar />
-        <ScrollToTop />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/project" element={<Projects />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="*" element={<Navigate to="/"/>} />
-        </Routes>
-        <Footer />
-      </div>
-    </Router>
+    <AuthProvider>
+      <PortfolioProvider>
+        <Router>
+          <Preloader load={load} />
+          <div className="App" id={load ? "no-scroll" : "scroll"}>
+            <Navbar onOpenLogin={() => setShowLogin(true)} />
+            <AdminLoginModal
+              show={showLogin}
+              handleClose={() => setShowLogin(false)}
+            />
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/project" element={<Projects />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <AdminDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+            <Footer />
+          </div>
+        </Router>
+      </PortfolioProvider>
+    </AuthProvider>
   );
 }
 

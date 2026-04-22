@@ -2,22 +2,11 @@ import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import ProjectCard from "./ProjectCards";
 import Particle from "../Particle";
-import severino from "../../Assets/Projects/severino.png";
-
-const projects = [
-  {
-    title: "Severino",
-    status: "Owned Project",
-    description:
-      "A web-based shop project focused on creating a smoother online shopping experience. It is still improving, but the current version already includes working user-facing features and Google-based sign in.",
-    stack: ["React", "Google Auth", "Web App"],
-    imgPath: severino,
-    ghLink: "https://github.com/andrewjrlimpiada34-afk/severino_webapp_shop",
-    demoLink: "https://severino-webapp-shop.vercel.app",
-  },
-];
+import { usePortfolio } from "../../context/PortfolioContext";
 
 function Projects() {
+  const { projects } = usePortfolio();
+
   return (
     <Container fluid className="project-section">
       <Particle />
@@ -33,7 +22,11 @@ function Projects() {
         <Row className="project-grid">
           {projects.map((project) => (
             <Col xl={4} lg={5} md={6} sm={10} className="project-card" key={project.title}>
-              <ProjectCard {...project} isBlog={false} />
+              <ProjectCard
+                {...project}
+                imgPath={project.imageUrl}
+                isBlog={false}
+              />
             </Col>
           ))}
         </Row>

@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 import logo from "../Assets/logo.png";
 import Button from "react-bootstrap/Button";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CgGitFork } from "react-icons/cg";
 import {
   AiOutlineHome,
   AiOutlineFundProjectionScreen,
   AiOutlineUser,
+  AiOutlineSetting,
 } from "react-icons/ai";
-
 import { CgFileDocument } from "react-icons/cg";
+import { useAuth } from "../context/AuthContext";
+import { usePortfolio } from "../context/PortfolioContext";
 
-function NavBar() {
+function NavBar({ onOpenLogin }) {
+  const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
+  const { homeContent, settings } = usePortfolio();
   const [expand, updateExpanded] = useState(false);
   const [navColour, updateNavbar] = useState(false);
 
@@ -40,8 +46,12 @@ function NavBar() {
       className={navColour ? "sticky" : "navbar"}
     >
       <Container>
-        <Navbar.Brand href="/" className="d-flex">
-          <img src={logo} className="img-fluid logo" alt="brand" />
+        <Navbar.Brand as={Link} to="/" className="d-flex">
+          <img
+            src={settings.logoUrl || homeContent.logoUrl || logo}
+            className="img-fluid logo"
+            alt="brand"
+          />
         </Navbar.Brand>
         <Navbar.Toggle
           aria-controls="responsive-navbar-nav"
@@ -96,12 +106,41 @@ function NavBar() {
 
             <Nav.Item className="fork-btn">
               <Button
-                href="https://github.com/andrewjrlimpiada34-afk"
+                href={settings.githubProfile || "https://github.com/andrewjrlimpiada34-afk"}
                 target="_blank"
                 rel="noreferrer"
                 className="fork-btn-inner"
               >
                 <CgGitFork style={{ fontSize: "1.2em" }} /> GitHub
+              </Button>
+            </Nav.Item>
+
+            <Nav.Item className="profile-trigger">
+              <Button
+                type="button"
+                variant="outline-light"
+                className="profile-btn"
+                onClick={() => {
+                  updateExpanded(false);
+                  if (isAuthenticated) {
+                    navigate("/admin");
+                    return;
+                  }
+
+                  onOpenLogin();
+                }}
+              >
+                {settings.logoUrl ? (
+                  <Image
+                    src={settings.logoUrl}
+                    roundedCircle
+                    className="profile-btn-image"
+                    alt="Admin profile"
+                  />
+                ) : (
+                  <AiOutlineSetting style={{ fontSize: "1.1em" }} />
+                )}
+                <span>{isAuthenticated ? "Dashboard" : "Admin"}</span>
               </Button>
             </Nav.Item>
           </Nav>

@@ -6,9 +6,11 @@ import {
   AiFillInstagram,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+import { usePortfolio } from "../context/PortfolioContext";
 
 function Footer() {
   const year = new Date().getFullYear();
+  const { homeContent, settings } = usePortfolio();
 
   return (
     <Container fluid className="footer">
@@ -23,7 +25,7 @@ function Footer() {
           <ul className="footer-icons">
             <li className="social-icons">
               <a
-                href="https://github.com/andrewjrlimpiada34-afk"
+                href={settings.githubProfile || homeContent.socialLinks.github}
                 style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -33,7 +35,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://x.com/DrewJrLimpiada"
+                href={homeContent.socialLinks.twitter}
                 style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -43,7 +45,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.linkedin.com/in/limpiada-andrew-jr-b-3299513b7"
+                href={homeContent.socialLinks.linkedin}
                 style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -53,7 +55,7 @@ function Footer() {
             </li>
             <li className="social-icons">
               <a
-                href="https://www.instagram.com/ajr_leo"
+                href={homeContent.socialLinks.instagram}
                 style={{ color: "white" }}
                 target="_blank"
                 rel="noopener noreferrer"

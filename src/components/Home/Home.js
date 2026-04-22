@@ -12,8 +12,11 @@ import {
   AiFillInstagram,
 } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
+import { usePortfolio } from "../../context/PortfolioContext";
 
 function Home() {
+  const { homeContent } = usePortfolio();
+
   return (
     <section>
       <Container fluid className="home-section" id="home">
@@ -21,9 +24,10 @@ function Home() {
         <Container className="home-content">
           <Row className="align-items-center">
             <Col lg={7} md={7} className="home-header">
-              <p className="hero-kicker">Hello World! I&apos;m</p>
+              <p className="hero-kicker">{homeContent.kicker}</p>
               <h1 className="heading-name hero-title">
-                Andrew B. <strong className="main-name">Limpiada Jr.</strong>
+                {homeContent.firstName}{" "}
+                <strong className="main-name">{homeContent.lastName}</strong>
               </h1>
 
               <div className="hero-type">
@@ -31,15 +35,11 @@ function Home() {
               </div>
 
               <p className="home-intro">
-                I&apos;m an aspiring Computer Engineer currently pursuing my
-                studies at Marinduque State College. I&apos;m passionate about
-                technology, creativity, and continuous learning.
+                {homeContent.introPrimary}
               </p>
 
               <p className="home-intro home-intro-secondary">
-                This portfolio reflects who I am as a student, builder, and
-                lifelong learner. I enjoy understanding how systems work,
-                solving problems through code, and turning ideas into reality.
+                {homeContent.introSecondary}
               </p>
 
               <div className="hero-actions">
@@ -52,24 +52,18 @@ function Home() {
               </div>
 
               <div className="hero-highlights">
-                <div className="hero-highlight-card">
-                  <span className="hero-highlight-label">Location</span>
-                  <strong>Paye, Mogpog, Marinduque</strong>
-                </div>
-                <div className="hero-highlight-card">
-                  <span className="hero-highlight-label">Current Path</span>
-                  <strong>BS Computer Engineering</strong>
-                </div>
-                <div className="hero-highlight-card">
-                  <span className="hero-highlight-label">Focus</span>
-                  <strong>Practical web solutions</strong>
-                </div>
+                {homeContent.highlights.map((item) => (
+                  <div className="hero-highlight-card" key={item.label}>
+                    <span className="hero-highlight-label">{item.label}</span>
+                    <strong>{item.value}</strong>
+                  </div>
+                ))}
               </div>
             </Col>
 
             <Col lg={5} md={5} className="home-image-wrap">
               <img
-                src={homeLogo}
+                src={homeContent.heroImageUrl || homeLogo}
                 alt="Andrew portfolio visual"
                 className="img-fluid home-illustration"
               />
@@ -90,7 +84,7 @@ function Home() {
             <ul className="home-about-social-links">
               <li className="social-icons">
                 <a
-                  href="https://github.com/andrewjrlimpiada34-afk"
+                  href={homeContent.socialLinks.github}
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
@@ -100,7 +94,7 @@ function Home() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://x.com/DrewJrLimpiada"
+                  href={homeContent.socialLinks.twitter}
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
@@ -110,7 +104,7 @@ function Home() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.linkedin.com/in/limpiada-andrew-jr-b-3299513b7"
+                  href={homeContent.socialLinks.linkedin}
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
@@ -120,7 +114,7 @@ function Home() {
               </li>
               <li className="social-icons">
                 <a
-                  href="https://www.instagram.com/ajr_leo"
+                  href={homeContent.socialLinks.instagram}
                   target="_blank"
                   rel="noreferrer"
                   className="icon-colour home-social-icons"
