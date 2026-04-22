@@ -2,10 +2,22 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Outfit&family=PT+Mono&display=swap");
 
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
 body {
   margin: 0;
   font-family: "PT Mono", monospace !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to left, rgb(27 20 41), rgb(20 15 35));
+  background:
+    radial-gradient(circle at 18% 18%, rgba(66, 99, 170, 0.1), transparent 22%),
+    radial-gradient(circle at 82% 12%, rgba(111, 156, 230, 0.08), transparent 18%),
+    radial-gradient(circle at 50% 75%, rgba(58, 92, 168, 0.05), transparent 24%),
+    #010308;
+  color: #f8fbff;
+  overflow-x: hidden;
 }
