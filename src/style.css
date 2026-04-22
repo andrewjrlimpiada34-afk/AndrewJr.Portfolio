@@ -12,6 +12,7 @@ html {
   );
 
   --imp-text-color: #c770f0;
+  --card-background-color: rgba(20, 16, 36, 0.72);
 }
 
 .purple {
@@ -270,7 +271,7 @@ button:focus {
 }
 
 .home-content {
-  padding: 9rem 0 2rem !important;
+  padding: 8rem 0 3rem !important;
   color: whitesmoke;
   text-align: left;
 }
@@ -282,11 +283,90 @@ button:focus {
 
 .heading-name {
   font-size: 2.5em !important;
-  padding-left: 45px !important;
+  padding-left: 0 !important;
 }
 
 .main-name {
   color: #cd5ff8;
+}
+
+.hero-kicker {
+  font-size: 1rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #d7c2ef;
+  margin-bottom: 0.5rem;
+}
+
+.hero-title {
+  font-size: 3.2em !important;
+  line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+
+.hero-type {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.home-intro {
+  font-size: 1.12rem;
+  line-height: 1.9;
+  max-width: 650px;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 0.9rem;
+}
+
+.home-intro-secondary {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 1.75rem;
+}
+
+.hero-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 2rem;
+}
+
+.hero-highlight-card,
+.story-card,
+.focus-card,
+.project-note {
+  background: var(--card-background-color);
+  border: 1px solid rgba(199, 112, 240, 0.18);
+  border-radius: 20px;
+  box-shadow: 0 18px 45px rgba(7, 4, 18, 0.24);
+}
+
+.hero-highlight-card {
+  padding: 1rem 1.1rem;
+}
+
+.hero-highlight-label {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.58);
+  margin-bottom: 0.45rem;
+}
+
+.home-image-wrap {
+  text-align: center;
+}
+
+.home-illustration {
+  max-height: 500px;
+  width: 100%;
 }
 
 .Typewriter__wrapper {
@@ -303,7 +383,7 @@ button:focus {
   .Typewriter__wrapper {
     font-size: 1.4em !important;
     font-weight: 500 !important;
-    position: absolute !important;
+    position: static !important;
   }
   .Typewriter__cursor {
     display: none !important;
@@ -330,15 +410,61 @@ button:focus {
 
 .home-about-description {
   color: white !important;
-  padding-top: 100px !important;
+  padding-top: 50px !important;
   padding-bottom: 20px !important;
-  text-align: center;
+  text-align: left;
 }
 
 .home-about-body {
-  padding-top: 50px;
+  padding-top: 18px;
   font-size: 1.2em !important;
   text-align: left;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.section-title {
+  font-size: 2.5em !important;
+}
+
+.home-story-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 2rem;
+}
+
+.story-card,
+.focus-card {
+  padding: 1.3rem;
+  height: 100%;
+}
+
+.story-card h3,
+.focus-card h3,
+.project-note h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.8rem;
+}
+
+.story-card p,
+.focus-card p,
+.project-note p {
+  margin-bottom: 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.75;
+}
+
+.profile-photo,
+.about-photo {
+  border-radius: 24px;
+  border: 1px solid rgba(199, 112, 240, 0.2);
+  box-shadow: 0 20px 50px rgba(7, 4, 18, 0.28);
+}
+
+.home-social-row {
+  padding-top: 50px;
+  padding-bottom: 80px;
 }
 
 .home-about-social {
@@ -467,15 +593,23 @@ button:focus {
 .project-card-view {
   box-shadow: 0 4px 5px 3px rgba(119, 53, 136, 0.459) !important;
   color: white !important;
-  background-color: transparent !important;
-  opacity: 0.9 !important;
+  background-color: var(--card-background-color) !important;
+  opacity: 1 !important;
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
+  border-radius: 24px !important;
+  border: 1px solid rgba(199, 112, 240, 0.16) !important;
 }
 .project-card-view:hover {
   transform: scale(1.02) !important;
   overflow: hidden !important;
   box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important;
+}
+
+.project-description {
+  text-align: justify;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
 }
 
 .blog-card {
@@ -511,7 +645,7 @@ button:focus {
 
 .card-img-top {
   padding: 20px !important;
-  opacity: 0.8 !important;
+  opacity: 1 !important;
   border-radius: 10px !important;
 }
 
@@ -532,6 +666,12 @@ button:focus {
   background-color: #6d20c5d7 !important;
   border-color: #6d20c5d7 !important;
 }
+
+.btn-outline-light:hover {
+  color: #fff !important;
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
 .btn:focus {
   outline: none !important;
   box-shadow: none !important;
@@ -543,6 +683,53 @@ button:focus {
   padding-top: 10px !important;
 }
 
+.project-support,
+.section-support {
+  color: rgba(255, 255, 255, 0.72);
+  max-width: 760px;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+.project-status {
+  display: inline-block;
+  margin-bottom: 1rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: rgba(199, 112, 240, 0.14);
+  color: #e2b9fa;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 1.2rem;
+}
+
+.project-tag {
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.9rem;
+}
+
+.project-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.project-note {
+  max-width: 760px;
+  margin: 2rem auto 0;
+  padding: 1.5rem;
+}
+
 /* --------- */
 /* About */
 /* --------- */
@@ -550,9 +737,25 @@ button:focus {
 .about-section {
   position: relative !important;
   padding-top: 150px !important;
-  padding-bottom: 30px !important;
-  /* background-image: var(--section-background-color) !important; */
+  padding-bottom: 60px !important;
   color: white !important;
+}
+
+.about-heading {
+  font-size: 2.4em !important;
+  padding-bottom: 20px;
+}
+
+.about-copy {
+  text-align: justify;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.82);
+  margin-bottom: 1rem;
+}
+
+.about-quote {
+  color: rgb(155 126 172);
+  margin-top: 1.2rem;
 }
 
 .tech-icons {
@@ -570,10 +773,11 @@ button:focus {
   box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
-  width: fit-content !important;
+  width: 100% !important;
   cursor: pointer !important;
   transition: outline-color 0.3s, outline-width 0.3s, transform 0.3s;
   color: white;
+  min-height: 88px;
 }
 
 .tech-icons-text {
@@ -602,18 +806,68 @@ button:focus {
 .quote-card-view {
   border: none !important;
   color: white !important;
-  background-color: transparent !important;
+  background-color: var(--card-background-color) !important;
+  border-radius: 24px !important;
+  box-shadow: 0 18px 45px rgba(7, 4, 18, 0.24) !important;
 }
 
 .about-activity {
   list-style: none !important;
   text-align: left !important;
   padding-left: 1px !important;
+  margin-bottom: 0.7rem;
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.focus-grid {
+  margin-top: 0.8rem;
+}
+
+.focus-card-wrap {
+  margin-bottom: 1.5rem;
 }
 
 @media (max-width: 767px) {
   .about-img {
     padding-top: 0 !important;
+  }
+
+  .home-content {
+    padding-top: 7rem !important;
+  }
+
+  .hero-title {
+    font-size: 2.35em !important;
+  }
+
+  .hero-highlights,
+  .home-story-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-actions,
+  .project-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn,
+  .project-actions .btn {
+    width: 100%;
+  }
+
+  .home-about-description {
+    padding-top: 0 !important;
+  }
+
+  .section-title {
+    font-size: 2em !important;
+  }
+
+  .home-intro,
+  .home-about-body,
+  .section-support,
+  .project-support {
+    font-size: 1rem !important;
   }
 }
 /* --------- */

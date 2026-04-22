@@ -7,34 +7,42 @@ import { BsGithub } from "react-icons/bs";
 function ProjectCards(props) {
   return (
     <Card className="project-card-view">
-      <Card.Img variant="top" src={props.imgPath} alt="card-img" />
+      <Card.Img variant="top" src={props.imgPath} alt={props.title} />
       <Card.Body>
+        {props.status && <span className="project-status">{props.status}</span>}
         <Card.Title>{props.title}</Card.Title>
-        <Card.Text style={{ textAlign: "justify" }}>
-          {props.description}
-        </Card.Text>
-        <Button variant="primary" href={props.ghLink} target="_blank">
-          <BsGithub /> &nbsp;
-          {props.isBlog ? "Blog" : "GitHub"}
-        </Button>
-        {"\n"}
-        {"\n"}
+        <Card.Text className="project-description">{props.description}</Card.Text>
 
-        {/* If the component contains Demo link and if it's not a Blog then, it will render the below component  */}
-
-        {!props.isBlog && props.demoLink && (
-          <Button
-            variant="primary"
-            href={props.demoLink}
-            target="_blank"
-            style={{ marginLeft: "10px" }}
-          >
-            <CgWebsite /> &nbsp;
-            {"Demo"}
-          </Button>
+        {props.stack && (
+          <div className="project-tags">
+            {props.stack.map((item) => (
+              <span className="project-tag" key={item}>
+                {item}
+              </span>
+            ))}
+          </div>
         )}
+
+        <div className="project-actions">
+          <Button variant="primary" href={props.ghLink} target="_blank" rel="noreferrer">
+            <BsGithub /> &nbsp;
+            GitHub
+          </Button>
+
+          {!props.isBlog && props.demoLink && (
+            <Button
+              variant="outline-light"
+              href={props.demoLink}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <CgWebsite /> &nbsp;Live Demo
+            </Button>
+          )}
+        </div>
       </Card.Body>
     </Card>
   );
 }
+
 export default ProjectCards;

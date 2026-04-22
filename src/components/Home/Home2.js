@@ -1,55 +1,57 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
-import myImg from "../../Assets/avatar.svg";
+import myImg from "../../Assets/andrew.png";
 import Tilt from "react-parallax-tilt";
 
 function Home2() {
   return (
     <Container fluid className="home-about-section" id="about">
       <Container>
-        <Row>
-          <Col md={8} className="home-about-description">
-            <h1 style={{ fontSize: "2.6em" }}>
-              LET ME <span className="purple"> INTRODUCE </span> MYSELF
+        <Row className="align-items-center">
+          <Col lg={7} md={8} className="home-about-description">
+            <h1 className="section-title">
+              A little <span className="purple">about me</span>
             </h1>
             <p className="home-about-body">
-              I’m a Software Engineer who loves transforming ideas into
-              reliable, scalable products. Over time, I’ve explored several
-              technologies and found my passion in building high-performance
-              systems and intuitive user experiences.
-              <br />
-              <br />
-              I’m proficient in
-              <i>
-                <b className="purple">
-                  {" "}
-                  JavaScript, C++, Rust, Node.js, and Java{" "}
-                </b>
-              </i>
-              — and I enjoy working across both backend and frontend stacks.
-              <br />
-              <br />
-              My key areas of interest include developing
-              <i>
-                <b className="purple">
-                  {" "}
-                  Web Applications, Blockchain Solutions,{" "}
-                </b>
-              </i>
-              and exploring new ways to bridge on-chain and off-chain systems.
-              <br />
-              <br />
-              Whenever possible, I love building projects with
-              <b className="purple"> Node.js </b> and modern frameworks like{" "}
-              <i>
-                <b className="purple">React.js</b> and{" "}
-                <b className="purple">Next.js</b>.
-              </i>
+              I enjoy exploring how systems work, solving problems through
+              code, and building ideas into something real and useful. Every
+              project is a chance for me to learn deeper, think better, and
+              create something with purpose.
             </p>
+            <p className="home-about-body">
+              I&apos;m still growing, but I care a lot about consistency,
+              curiosity, and building skills that can create meaningful
+              solutions for everyday life.
+            </p>
+
+            <div className="home-story-grid">
+              <div className="story-card">
+                <h3>How I learn</h3>
+                <p>
+                  By building projects, revisiting mistakes, and improving one
+                  small step at a time.
+                </p>
+              </div>
+              <div className="story-card">
+                <h3>What I value</h3>
+                <p>
+                  Hard work, resilience, and staying grounded while aiming for
+                  bigger goals.
+                </p>
+              </div>
+              <div className="story-card">
+                <h3>What I want to build</h3>
+                <p>
+                  Technology that improves processes, solves real problems, and
+                  feels useful to people.
+                </p>
+              </div>
+            </div>
           </Col>
-          <Col md={4} className="myAvtar">
-            <Tilt>
-              <img src={myImg} className="img-fluid" alt="avatar" />
+
+          <Col lg={5} md={4} className="myAvtar">
+            <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8}>
+              <img src={myImg} className="img-fluid profile-photo" alt="Andrew" />
             </Tilt>
           </Col>
         </Row>
@@ -57,4 +59,5 @@ function Home2() {
     </Container>
   );
 }
+
 export default Home2;
