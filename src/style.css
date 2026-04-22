@@ -1,18 +1,19 @@
 html {
   --section-background-color: linear-gradient(
-    to bottom left,
-    rgba(17, 16, 16, 0.582),
-    rgba(12, 8, 24, 0.904)
+    180deg,
+    rgba(4, 10, 24, 0.98) 0%,
+    rgba(8, 16, 35, 0.98) 42%,
+    rgba(6, 12, 28, 0.98) 100%
   );
 
   --image-gradient: linear-gradient(
-    to bottom left,
-    rgba(17, 16, 16, 0.678),
-    rgba(12, 10, 22, 0.863)
+    180deg,
+    rgba(8, 16, 36, 0.78) 0%,
+    rgba(4, 10, 24, 0.92) 100%
   );
 
-  --imp-text-color: #c770f0;
-  --card-background-color: rgba(20, 16, 36, 0.72);
+  --imp-text-color: #8cc8ff;
+  --card-background-color: rgba(10, 18, 38, 0.78);
 }
 
 .purple {
@@ -82,9 +83,9 @@ button:focus {
 /* Navbar Section  */
 /* --------- */
 .sticky {
-  background-color: #1b1a2ea9 !important;
+  background-color: rgba(5, 12, 28, 0.88) !important;
   transition: all 0.3s ease-out 0s !important;
-  box-shadow: 0px 10px 10px 0px rgba(9, 5, 29, 0.171) !important;
+  box-shadow: 0px 10px 24px 0px rgba(2, 5, 12, 0.32) !important;
   backdrop-filter: blur(15px) !important;
 }
 
@@ -150,7 +151,7 @@ button:focus {
   .navbar {
     padding: 1rem 2rem !important;
     font-size: 1.4rem !important;
-    background-color: #181a27 !important;
+    background-color: rgba(7, 14, 30, 0.94) !important;
   }
   .navbar-nav .nav-item a::after {
     display: none !important;
@@ -200,7 +201,7 @@ button:focus {
   height: 5px;
   width: 0;
   border-radius: 16px;
-  background: #c95bf5;
+  background: #78bfff;
   bottom: 1px;
   left: 0;
   z-index: -1;
@@ -250,10 +251,12 @@ button:focus {
 }
 #tsparticles {
   position: fixed !important;
-  background-repeat: no-repeat !important;
-  background-size: cover !important;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
+  z-index: 0;
+  pointer-events: none;
 }
 
 .home-header {
@@ -262,8 +265,12 @@ button:focus {
 
 .home-section {
   position: relative;
-  z-index: -1;
-  /* background-image: var(--image-gradient), url(./Assets/home-bg.jpg); */
+  z-index: 1;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(117, 164, 255, 0.14), transparent 28%),
+    radial-gradient(circle at 80% 15%, rgba(155, 200, 255, 0.1), transparent 24%),
+    radial-gradient(circle at 50% 80%, rgba(99, 149, 255, 0.08), transparent 26%),
+    var(--image-gradient);
   background-position: top center;
   background-repeat: no-repeat;
   padding-bottom: 30px !important;
@@ -274,6 +281,8 @@ button:focus {
   padding: 8rem 0 3rem !important;
   color: whitesmoke;
   text-align: left;
+  position: relative;
+  z-index: 2;
 }
 
 .heading {
@@ -287,7 +296,7 @@ button:focus {
 }
 
 .main-name {
-  color: #cd5ff8;
+  color: #9fd8ff;
 }
 
 .hero-kicker {
@@ -342,9 +351,9 @@ button:focus {
 .focus-card,
 .project-note {
   background: var(--card-background-color);
-  border: 1px solid rgba(199, 112, 240, 0.18);
+  border: 1px solid rgba(140, 200, 255, 0.14);
   border-radius: 20px;
-  box-shadow: 0 18px 45px rgba(7, 4, 18, 0.24);
+  box-shadow: 0 18px 45px rgba(2, 8, 18, 0.28);
 }
 
 .hero-highlight-card {
@@ -465,6 +474,8 @@ button:focus {
 .home-social-row {
   padding-top: 50px;
   padding-bottom: 80px;
+  position: relative;
+  z-index: 2;
 }
 
 .home-about-social {
@@ -502,7 +513,7 @@ button:focus {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background: #68187a;
+  background: #12395f;
   transition: 0.5s;
   transform: scale(0.9);
   z-index: -1;
@@ -510,13 +521,13 @@ button:focus {
 
 .home-social-icons:hover::before {
   transform: scale(1.1);
-  box-shadow: 0 0 15px #801f95;
+  box-shadow: 0 0 15px #4aa3ff;
 }
 
 .home-social-icons:hover {
-  color: #87209e;
-  box-shadow: 0 0 5px #87209e;
-  text-shadow: 0 0 2px #87209e;
+  color: #2d7dd4;
+  box-shadow: 0 0 5px #4aa3ff;
+  text-shadow: 0 0 2px #4aa3ff;
 }
 
 .social-icons {
@@ -526,14 +537,14 @@ button:focus {
 }
 
 .icon-colour {
-  color: #700c86 !important;
+  color: #174c85 !important;
 }
 
 /* --------- */
 /* Footer */
 /* --------- */
 .footer {
-  background-color: rgb(10, 4, 22);
+  background-color: rgba(5, 11, 24, 0.95);
   bottom: 0 !important;
   padding-top: 10px !important;
   padding-bottom: 8px !important ;
@@ -577,16 +588,22 @@ button:focus {
 /* --------- */
 .project-section {
   position: relative !important;
+  z-index: 1;
   padding-top: 150px !important;
   padding-bottom: 30px !important;
   background-image: var(--section-background-color) !important;
 }
 
+.project-grid {
+  justify-content: center;
+  padding-bottom: 10px;
+}
+
 .project-card {
-  padding-top: 50px !important;
-  padding-bottom: 50px !important;
-  padding-left: 25px !important;
-  padding-right: 25px !important;
+  padding-top: 24px !important;
+  padding-bottom: 24px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
   height: auto !important;
 }
 
@@ -598,12 +615,12 @@ button:focus {
   transition: all 0.5s ease 0s !important;
   height: 100% !important;
   border-radius: 24px !important;
-  border: 1px solid rgba(199, 112, 240, 0.16) !important;
+  border: 1px solid rgba(140, 200, 255, 0.14) !important;
 }
 .project-card-view:hover {
-  transform: scale(1.02) !important;
+  transform: translateY(-6px) !important;
   overflow: hidden !important;
-  box-shadow: 0 4px 4px 5px rgba(129, 72, 144, 0.561) !important;
+  box-shadow: 0 12px 32px rgba(3, 10, 22, 0.35) !important;
 }
 
 .project-description {
@@ -657,14 +674,23 @@ button:focus {
 
 .btn-primary {
   color: #fff !important;
-  background-color: #623686 !important;
-  border-color: #623686 !important;
+  background-color: #1f5f99 !important;
+  border-color: #1f5f99 !important;
+  position: relative;
+  z-index: 3;
+  pointer-events: auto !important;
 }
 
 .btn-primary:hover {
   color: #fff !important;
-  background-color: #6d20c5d7 !important;
-  border-color: #6d20c5d7 !important;
+  background-color: #2b79c3 !important;
+  border-color: #2b79c3 !important;
+}
+
+.btn-outline-light {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto !important;
 }
 
 .btn-outline-light:hover {
@@ -699,8 +725,8 @@ button:focus {
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  background: rgba(199, 112, 240, 0.14);
-  color: #e2b9fa;
+  background: rgba(140, 200, 255, 0.12);
+  color: #bfe1ff;
 }
 
 .project-tags {
@@ -736,9 +762,16 @@ button:focus {
 
 .about-section {
   position: relative !important;
+  z-index: 1;
   padding-top: 150px !important;
   padding-bottom: 60px !important;
   color: white !important;
+}
+
+.about-photo-top {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
 }
 
 .about-heading {
@@ -758,6 +791,16 @@ button:focus {
   margin-top: 1.2rem;
 }
 
+.skills-row {
+  justify-content: center;
+  padding-bottom: 40px;
+}
+
+.skill-tile-wrap {
+  display: flex;
+  margin-bottom: 1.2rem;
+}
+
 .tech-icons {
   display: flex !important;
   align-self: center !important;
@@ -766,11 +809,11 @@ button:focus {
   margin: 15px !important;
   padding: 10px 20px !important;
   opacity: 0.93 !important;
-  outline: 1.7px solid rgba(200, 137, 230, 0.637) !important;
+  outline: 1.7px solid rgba(140, 200, 255, 0.3) !important;
   vertical-align: middle !important;
   text-align: center !important;
   border-radius: 24px !important;
-  box-shadow: 4px 5px 4px 3px rgba(89, 4, 168, 0.137) !important;
+  box-shadow: 0 12px 28px rgba(2, 8, 18, 0.2) !important;
   overflow: hidden !important;
   transition: all 0.4s ease 0s !important;
   width: 100% !important;
@@ -778,6 +821,8 @@ button:focus {
   transition: outline-color 0.3s, outline-width 0.3s, transform 0.3s;
   color: white;
   min-height: 88px;
+  background: rgba(10, 18, 38, 0.88);
+  gap: 12px;
 }
 
 .tech-icons-text {
@@ -796,7 +841,7 @@ button:focus {
 .tech-icons:hover {
   transform: scale(1.05) !important;
   overflow: hidden !important;
-  outline: 2.2px solid rgba(197, 115, 230, 0.883) !important;
+  outline: 2.2px solid rgba(140, 200, 255, 0.72) !important;
 }
 .tech-icon-images {
   height: 1.6rem;
@@ -808,7 +853,7 @@ button:focus {
   color: white !important;
   background-color: var(--card-background-color) !important;
   border-radius: 24px !important;
-  box-shadow: 0 18px 45px rgba(7, 4, 18, 0.24) !important;
+  box-shadow: 0 18px 45px rgba(2, 8, 18, 0.24) !important;
 }
 
 .about-activity {
@@ -845,6 +890,10 @@ button:focus {
     grid-template-columns: 1fr;
   }
 
+  .project-grid {
+    padding-bottom: 0;
+  }
+
   .hero-actions,
   .project-actions {
     flex-direction: column;
@@ -868,6 +917,10 @@ button:focus {
   .section-support,
   .project-support {
     font-size: 1rem !important;
+  }
+
+  .skill-tile-wrap {
+    margin-bottom: 0.85rem;
   }
 }
 /* --------- */

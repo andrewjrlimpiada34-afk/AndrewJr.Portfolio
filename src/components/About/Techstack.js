@@ -16,11 +16,20 @@ const skills = [
 
 function Techstack() {
   return (
-    <Row style={{ justifyContent: "center", paddingBottom: "50px" }}>
+    <Row className="skills-row">
       {skills.map((skill) => (
-        <Col xs={10} sm={6} md={4} lg={3} className="tech-icons" key={skill.label}>
-          <img src={skill.icon} alt={skill.alt} className="tech-icon-images" />
-          <div className="tech-icons-text">{skill.label}</div>
+        <Col
+          xs={12}
+          sm={6}
+          md={4}
+          lg={3}
+          className="skill-tile-wrap"
+          key={skill.label}
+        >
+          <div className="tech-icons">
+            <img src={skill.icon} alt={skill.alt} className="tech-icon-images" />
+            <div className="tech-icons-text">{skill.label}</div>
+          </div>
         </Col>
       ))}
     </Row>

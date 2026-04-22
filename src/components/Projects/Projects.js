@@ -30,9 +30,9 @@ function Projects() {
           to improve. More original work will be added here as I build them.
         </p>
 
-        <Row style={{ justifyContent: "center", paddingBottom: "10px" }}>
+        <Row className="project-grid">
           {projects.map((project) => (
-            <Col lg={7} md={9} className="project-card" key={project.title}>
+            <Col xl={4} lg={5} md={6} sm={10} className="project-card" key={project.title}>
               <ProjectCard {...project} isBlog={false} />
             </Col>
           ))}

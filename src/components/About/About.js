@@ -13,8 +13,8 @@ function About() {
         <Container>
           <Row className="justify-content-center about-hero-row">
             <Col
-              lg={7}
-              md={7}
+              lg={8}
+              md={9}
               style={{
                 justifyContent: "center",
                 paddingTop: "30px",
@@ -24,15 +24,14 @@ function About() {
               <h1 className="about-heading">
                 More about <strong className="purple">my journey</strong>
               </h1>
+              <div className="about-photo-top">
+                <img
+                  src={me}
+                  alt="Andrew portrait"
+                  className="img-fluid about-photo"
+                />
+              </div>
               <Aboutcard />
-            </Col>
-            <Col
-              lg={5}
-              md={5}
-              style={{ paddingTop: "70px", paddingBottom: "50px" }}
-              className="about-img"
-            >
-              <img src={me} alt="Andrew portrait" className="img-fluid about-photo" />
             </Col>
           </Row>
 
