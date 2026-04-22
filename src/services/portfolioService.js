@@ -15,8 +15,25 @@ import { db, isFirebaseConfigured } from "../config/firebase";
 
 function ensureFirebase() {
   if (!isFirebaseConfigured || !db) {
-    throw new Error("Firebase is not configured.");
+    throw new Error("Firebase is not configured. Please check your environment variables.");
   }
+}
+
+// Helper function for user-friendly error messages
+function getUserFriendlyError(error, defaultMessage) {
+  if (error?.code === "permission-denied") {
+    return "Access denied. Please check your Firestore security rules.";
+  }
+  if (error?.code === "unavailable") {
+    return "Service temporarily unavailable. Please try again later.";
+  }
+  if (error?.code === "unauthenticated") {
+    return "Authentication required. Please log in again.";
+  }
+  if (error?.message?.includes("network")) {
+    return "Network error. Please check your connection.";
+  }
+  return error?.message || defaultMessage;
 }
 
 async function getContentDoc(docId) {
@@ -38,18 +55,30 @@ export async function getSettings() {
 }
 
 export async function saveHomeContent(payload) {
-  ensureFirebase();
-  await setDoc(doc(db, "siteContent", "home"), payload, { merge: true });
+  try {
+    ensureFirebase();
+    await setDoc(doc(db, "siteContent", "home"), payload, { merge: true });
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to save home content."));
+  }
 }
 
 export async function saveAboutContent(payload) {
-  ensureFirebase();
-  await setDoc(doc(db, "siteContent", "about"), payload, { merge: true });
+  try {
+    ensureFirebase();
+    await setDoc(doc(db, "siteContent", "about"), payload, { merge: true });
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to save about content."));
+  }
 }
 
 export async function saveSettings(payload) {
-  ensureFirebase();
-  await setDoc(doc(db, "siteContent", "settings"), payload, { merge: true });
+  try {
+    ensureFirebase();
+    await setDoc(doc(db, "siteContent", "settings"), payload, { merge: true });
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to save settings."));
+  }
 }
 
 export async function getProjects() {
@@ -59,21 +88,33 @@ export async function getProjects() {
 }
 
 export async function createProject(payload) {
-  ensureFirebase();
-  await addDoc(collection(db, "projects"), {
-    ...payload,
-    createdAt: serverTimestamp(),
-  });
+  try {
+    ensureFirebase();
+    await addDoc(collection(db, "projects"), {
+      ...payload,
+      createdAt: serverTimestamp(),
+    });
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to create project."));
+  }
 }
 
 export async function updateProject(id, payload) {
-  ensureFirebase();
-  await updateDoc(doc(db, "projects", id), payload);
+  try {
+    ensureFirebase();
+    await updateDoc(doc(db, "projects", id), payload);
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to update project."));
+  }
 }
 
 export async function deleteProject(id) {
-  ensureFirebase();
-  await deleteDoc(doc(db, "projects", id));
+  try {
+    ensureFirebase();
+    await deleteDoc(doc(db, "projects", id));
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to delete project."));
+  }
 }
 
 export async function getCertificates() {
@@ -85,19 +126,31 @@ export async function getCertificates() {
 }
 
 export async function createCertificate(payload) {
-  ensureFirebase();
-  await addDoc(collection(db, "certificates"), {
-    ...payload,
-    createdAt: serverTimestamp(),
-  });
+  try {
+    ensureFirebase();
+    await addDoc(collection(db, "certificates"), {
+      ...payload,
+      createdAt: serverTimestamp(),
+    });
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to create certificate."));
+  }
 }
 
 export async function updateCertificate(id, payload) {
-  ensureFirebase();
-  await updateDoc(doc(db, "certificates", id), payload);
+  try {
+    ensureFirebase();
+    await updateDoc(doc(db, "certificates", id), payload);
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to update certificate."));
+  }
 }
 
 export async function deleteCertificate(id) {
-  ensureFirebase();
-  await deleteDoc(doc(db, "certificates", id));
+  try {
+    ensureFirebase();
+    await deleteDoc(doc(db, "certificates", id));
+  } catch (error) {
+    throw new Error(getUserFriendlyError(error, "Failed to delete certificate."));
+  }
 }

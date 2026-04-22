@@ -19,6 +19,7 @@ const PortfolioContext = createContext(null);
 
 export function PortfolioProvider({ children }) {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
   const [homeContent, setHomeContent] = useState(defaultHomeContent);
   const [aboutContent, setAboutContent] = useState(defaultAboutContent);
   const [settings, setSettings] = useState(defaultSettings);
@@ -28,10 +29,12 @@ export function PortfolioProvider({ children }) {
   async function refreshData() {
     if (!isFirebaseConfigured) {
       setLoading(false);
+      setError("");
       return;
     }
 
     setLoading(true);
+    setError("");
 
     try {
       const [
@@ -53,13 +56,21 @@ export function PortfolioProvider({ children }) {
       setSettings(nextSettings ? { ...defaultSettings, ...nextSettings } : defaultSettings);
       setProjects(nextProjects.length ? nextProjects : defaultProjects);
       setCertificates(nextCertificates.length ? nextCertificates : defaultCertificates);
-    } catch (error) {
+    } catch (err) {
+      // Set user-friendly error message
+      const errorMessage = err?.message?.includes("permission")
+        ? "Access denied. Please check your Firestore security rules."
+        : err?.message?.includes("network")
+        ? "Network error. Please check your connection."
+        : "Failed to load portfolio data. Using cached content.";
+      
+      setError(errorMessage);
       setHomeContent(defaultHomeContent);
       setAboutContent(defaultAboutContent);
       setSettings(defaultSettings);
       setProjects(defaultProjects);
       setCertificates(defaultCertificates);
-      console.error(error);
+      console.error("Portfolio data fetch error:", err);
     } finally {
       setLoading(false);
     }
@@ -73,6 +84,7 @@ export function PortfolioProvider({ children }) {
     <PortfolioContext.Provider
       value={{
         loading,
+        error,
         homeContent,
         aboutContent,
         settings,
